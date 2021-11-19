@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <hr />
+      <ng-container *ngIf="userName === ''">
+        <app-warning-alert></app-warning-alert>
+      </ng-container>
+      <hr />
+      <ng-container *ngIf="userName && userName.length < 7">
+        <app-success-alert></app-success-alert>
+      </ng-container>
+      <ng-container *ngIf="userName.length > 6">
+        <app-error></app-error>
+      </ng-container>
+    </div>
+  </div>
+</div>
+
+<input type="text" class="form-control" [(ngModel)]="userName" />
+<p>{{ userName }}</p>
+<button class="btn btn-primary" user [disabled]="!userName" (click)="reset()">
+  Reset
+</button>
